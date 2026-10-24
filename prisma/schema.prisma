@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "client"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPING
+  DELIVERED
+  CANCELLED
+}
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+enum PaymentMethod {
+  COD
+  VNPAY
+}
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  name String
+  passwordHash String
+  role Role @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  addresses Address[]
+  orders Order[]
+  movements StockMovement[]
+}
+model Address {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name String
+  phone String
+  detail String
+  createdAt DateTime @default(now())
+}
+model Category {
+  id String @id @default(cuid())
+  name String
+  slug String @unique
+  products Product[]
+}
+model Product {
+  id String @id @default(cuid())
+  slug String @unique
+  name String
+  description String
+  material String
+  price Int
+  compareAt Int?
+  images String[]
+  active Boolean @default(true)
+  featured Boolean @default(false)
+  categoryId String
+  category Category @relation(fields: [categoryId], references: [id])
+  variants Variant[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([categoryId, active])
+}
+model Variant {
+  id String @id @default(cuid())
+  productId String
+  product Product @relation(fields: [productId], references: [id])
+  sku String @unique
+  size String
+  color String
+  stock Int @default(0)
+  active Boolean @default(true)
+  items OrderItem[]
+  movements StockMovement[]
+  @@unique([productId, size, color])
+}
+model Voucher {
+  id String @id @default(cuid())
+  code String @unique
+  percent Int
+  minOrder Int
+  maxDiscount Int
+  usageLimit Int
+  used Int @default(0)
+  startsAt DateTime
+  expiresAt DateTime
+  active Boolean @default(true)
+  orders Order[]
+}
+model Order {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  idempotencyKey String
+  status OrderStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(UNPAID)
+  paymentMethod PaymentMethod @default(COD)
+  recipient String
+  phone String
+  address String
+  note String
+  subtotal Int
+  discount Int
+  shipping Int
+  total Int
+  voucherId String?
+  voucher Voucher? @relation(fields: [voucherId], references: [id])
+  voucherCode String?
+  expiresAt DateTime?
+  paymentRef String? @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items OrderItem[]
+  events OrderEvent[]
+  @@unique([userId, idempotencyKey])
+  @@index([userId, createdAt])
+}
+model OrderItem {
+  id String @id @default(cuid())
+  orderId String
+  order Order @relation(fields: [orderId], references: [id])
+  variantId String
+  variant Variant @relation(fields: [variantId], references: [id])
+  productName String
+  sku String
+  size String
+  color String
+  image String
+  price Int
+  quantity Int
+}
+model OrderEvent {
+  id String @id @default(cuid())
+  orderId String
+  order Order @relation(fields: [orderId], references: [id])
+  status OrderStatus
+  message String
+  createdAt DateTime @default(now())
+}
+model StockMovement {
+  id String @id @default(cuid())
+  variantId String
+  variant Variant @relation(fields: [variantId], references: [id])
+  actorId String?
+  actor User? @relation(fields: [actorId], references: [id])
+  delta Int
+  reason String
+  createdAt DateTime @default(now())
+}
+model RateLimit {
+  key String @id
+  count Int
+  resetAt DateTime
+}

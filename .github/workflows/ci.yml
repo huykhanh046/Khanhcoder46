@@ -1,0 +1,41 @@
+name: KH Fashion CI
+on:
+  push:
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-bookworm
+        env:
+          POSTGRES_USER: khfashion
+          POSTGRES_PASSWORD: khfashion_dev
+          POSTGRES_DB: khfashion
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U khfashion -d khfashion"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://khfashion:khfashion_dev@localhost:5432/khfashion?schema=public
+      SESSION_SECRET: ci-only-session-key-not-for-production-46102026
+      APP_URL: http://localhost:3000
+      COOKIE_SECURE: 'false'
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run db:generate && npm run db:migrate && npm run db:seed
+      - run: npm run lint && npm run typecheck && npm test && npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: test-results/
