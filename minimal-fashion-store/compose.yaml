@@ -1,0 +1,63 @@
+services:
+  app:
+    image: minimal-fashion-php
+    build: .
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    working_dir: /app
+    volumes: [".:/app"]
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      DB_HOST: db
+      COMPOSER_HOME: /tmp/composer
+    depends_on:
+      db:
+        condition: service_healthy
+  queue:
+    image: minimal-fashion-php
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    volumes: [".:/app"]
+    environment: { DB_HOST: db }
+    command: ["php", "artisan", "queue:work", "--tries=3", "--timeout=60"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  scheduler:
+    image: minimal-fashion-php
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    volumes: [".:/app"]
+    environment: { DB_HOST: db }
+    command: ["php", "artisan", "schedule:work"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-minimal}
+      MYSQL_USER: ${DB_USERNAME:-minimal}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/01-test-databases.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  mailpit:
+    image: axllent/mailpit:v1.27
+    profiles: ["mail"]
+    ports: ["127.0.0.1:8025:8025"]
+  node:
+    image: node:22-bookworm-slim
+    profiles: ["tools"]
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    working_dir: /app
+    volumes: [".:/app"]
+    environment: { npm_config_cache: /tmp/npm-cache }
+    command: ["sh", "-c", "npm ci && npm run build"]
+volumes:
+  mysql_data:

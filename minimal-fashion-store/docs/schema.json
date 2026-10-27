@@ -1,0 +1,3172 @@
+{
+    "addresses": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "phone",
+                "COLUMN_TYPE": "varchar(20)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "address",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "city",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "addresses_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "addresses_user_id_foreign"
+            }
+        ]
+    },
+    "audit_logs": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "action",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "subject_type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "subject_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "changes",
+                "COLUMN_TYPE": "json",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "audit_logs_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "audit_logs_user_id_foreign"
+            }
+        ]
+    },
+    "banners": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "title",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "subtitle",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "image_path",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "link",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "\/products",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "position",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "active",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "cache": {
+        "columns": [
+            {
+                "COLUMN_NAME": "key",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "value",
+                "COLUMN_TYPE": "mediumtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "expiration",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "cache_expiration_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "expiration"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "key"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "cache_locks": {
+        "columns": [
+            {
+                "COLUMN_NAME": "key",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "owner",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "expiration",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "cache_locks_expiration_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "expiration"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "key"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "cart_items": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "cart_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "quantity",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "cart_items_cart_id_product_variant_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "cart_id"
+            },
+            {
+                "INDEX_NAME": "cart_items_cart_id_product_variant_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "product_variant_id"
+            },
+            {
+                "INDEX_NAME": "cart_items_product_variant_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_variant_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "cart_id",
+                "REFERENCED_TABLE_NAME": "carts",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "cart_items_cart_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "REFERENCED_TABLE_NAME": "product_variants",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "cart_items_product_variant_id_foreign"
+            }
+        ]
+    },
+    "carts": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "token",
+                "COLUMN_TYPE": "char(36)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "carts_token_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "token"
+            },
+            {
+                "INDEX_NAME": "carts_user_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "carts_user_id_foreign"
+            }
+        ]
+    },
+    "categories": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "slug",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "categories_slug_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "slug"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "collections": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(100)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "slug",
+                "COLUMN_TYPE": "varchar(120)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "description",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "image_path",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "active",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "position",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "collections_active_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "active"
+            },
+            {
+                "INDEX_NAME": "collections_slug_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "slug"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "failed_jobs": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "uuid",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "connection",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "queue",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "payload",
+                "COLUMN_TYPE": "longtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "exception",
+                "COLUMN_TYPE": "longtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "failed_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "failed_jobs_uuid_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "uuid"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "inventories": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "stock",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "reserved",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "inventories_product_variant_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_variant_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "REFERENCED_TABLE_NAME": "product_variants",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "inventories_product_variant_id_foreign"
+            }
+        ]
+    },
+    "inventory_movements": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "stock_delta",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "reserved_delta",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "reason",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "event_key",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "inventory_movements_event_key_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "event_key"
+            },
+            {
+                "INDEX_NAME": "inventory_movements_product_variant_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_variant_id"
+            },
+            {
+                "INDEX_NAME": "inventory_movements_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "REFERENCED_TABLE_NAME": "product_variants",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "inventory_movements_product_variant_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "inventory_movements_user_id_foreign"
+            }
+        ]
+    },
+    "job_batches": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "total_jobs",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "pending_jobs",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "failed_jobs",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "failed_job_ids",
+                "COLUMN_TYPE": "longtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "options",
+                "COLUMN_TYPE": "mediumtext",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "cancelled_at",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "finished_at",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "jobs": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "queue",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "payload",
+                "COLUMN_TYPE": "longtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "attempts",
+                "COLUMN_TYPE": "tinyint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "reserved_at",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "available_at",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "jobs_queue_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "queue"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "migrations": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "migration",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "batch",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "notifications": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "notifiable_type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "notifiable_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "data",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "read_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "notifications_notifiable_type_notifiable_id_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "notifiable_type"
+            },
+            {
+                "INDEX_NAME": "notifications_notifiable_type_notifiable_id_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "notifiable_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "order_items": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "shop_order_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "product_name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "sku",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "size",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "color",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "unit_price",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "quantity",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "total",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "order_items_product_variant_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_variant_id"
+            },
+            {
+                "INDEX_NAME": "order_items_shop_order_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_order_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_variant_id",
+                "REFERENCED_TABLE_NAME": "product_variants",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "order_items_product_variant_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "shop_order_id",
+                "REFERENCED_TABLE_NAME": "shop_orders",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "order_items_shop_order_id_foreign"
+            }
+        ]
+    },
+    "orders": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "number",
+                "COLUMN_TYPE": "char(36)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "checkout_key",
+                "COLUMN_TYPE": "char(36)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "payment_method",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "shipping_address",
+                "COLUMN_TYPE": "json",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "subtotal",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "discount",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "shipping",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "total",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "expires_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "shipping_method",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "standard",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "shipping_label",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "Giao hàng tiêu chuẩn",
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "orders_checkout_key_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "checkout_key"
+            },
+            {
+                "INDEX_NAME": "orders_expires_at_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "expires_at"
+            },
+            {
+                "INDEX_NAME": "orders_number_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "number"
+            },
+            {
+                "INDEX_NAME": "orders_status_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "status"
+            },
+            {
+                "INDEX_NAME": "orders_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "orders_user_id_foreign"
+            }
+        ]
+    },
+    "password_reset_tokens": {
+        "columns": [
+            {
+                "COLUMN_NAME": "email",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "token",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "email"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "payment_callbacks": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "payment_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "fingerprint",
+                "COLUMN_TYPE": "char(64)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "transaction_reference",
+                "COLUMN_TYPE": "varchar(100)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "provider_reference",
+                "COLUMN_TYPE": "varchar(100)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "response_code",
+                "COLUMN_TYPE": "varchar(10)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "signature_valid",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "verdict",
+                "COLUMN_TYPE": "varchar(150)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "attempts",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "payment_callbacks_fingerprint_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "fingerprint"
+            },
+            {
+                "INDEX_NAME": "payment_callbacks_payment_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "payment_id"
+            },
+            {
+                "INDEX_NAME": "payment_callbacks_transaction_reference_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "transaction_reference"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "payment_id",
+                "REFERENCED_TABLE_NAME": "payments",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "payment_callbacks_payment_id_foreign"
+            }
+        ]
+    },
+    "payment_transactions": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "payment_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "shop_order_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "amount",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "event_key",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "provider_reference",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "result_code",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "payment_transactions_event_key_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "event_key"
+            },
+            {
+                "INDEX_NAME": "payment_transactions_payment_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "payment_id"
+            },
+            {
+                "INDEX_NAME": "payment_transactions_shop_order_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_order_id"
+            },
+            {
+                "INDEX_NAME": "payment_transactions_type_created_at_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "type"
+            },
+            {
+                "INDEX_NAME": "payment_transactions_type_created_at_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "created_at"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "payment_id",
+                "REFERENCED_TABLE_NAME": "payments",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "payment_transactions_payment_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "shop_order_id",
+                "REFERENCED_TABLE_NAME": "shop_orders",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "payment_transactions_shop_order_id_foreign"
+            }
+        ]
+    },
+    "payments": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "order_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "reference",
+                "COLUMN_TYPE": "char(36)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "method",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "amount",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "payments_order_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "order_id"
+            },
+            {
+                "INDEX_NAME": "payments_reference_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "reference"
+            },
+            {
+                "INDEX_NAME": "payments_status_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "status"
+            },
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "order_id",
+                "REFERENCED_TABLE_NAME": "orders",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "payments_order_id_foreign"
+            }
+        ]
+    },
+    "product_images": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "product_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "path",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "alt",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "position",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "product_images_product_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_id",
+                "REFERENCED_TABLE_NAME": "products",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "product_images_product_id_foreign"
+            }
+        ]
+    },
+    "product_variants": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "product_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "sku",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "size",
+                "COLUMN_TYPE": "varchar(20)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "color",
+                "COLUMN_TYPE": "varchar(50)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "price",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "compare_price",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "active",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "product_variants_product_id_size_color_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_id"
+            },
+            {
+                "INDEX_NAME": "product_variants_product_id_size_color_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "size"
+            },
+            {
+                "INDEX_NAME": "product_variants_product_id_size_color_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 3,
+                "COLUMN_NAME": "color"
+            },
+            {
+                "INDEX_NAME": "product_variants_sku_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "sku"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_id",
+                "REFERENCED_TABLE_NAME": "products",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "product_variants_product_id_foreign"
+            }
+        ]
+    },
+    "products": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "category_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "slug",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "description",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "active",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "deleted_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "collection_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "products_category_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "category_id"
+            },
+            {
+                "INDEX_NAME": "products_collection_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "collection_id"
+            },
+            {
+                "INDEX_NAME": "products_name_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "name"
+            },
+            {
+                "INDEX_NAME": "products_shop_id_status_active_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_id"
+            },
+            {
+                "INDEX_NAME": "products_shop_id_status_active_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "status"
+            },
+            {
+                "INDEX_NAME": "products_shop_id_status_active_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 3,
+                "COLUMN_NAME": "active"
+            },
+            {
+                "INDEX_NAME": "products_slug_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "slug"
+            },
+            {
+                "INDEX_NAME": "products_status_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "status"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "category_id",
+                "REFERENCED_TABLE_NAME": "categories",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "products_category_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "collection_id",
+                "REFERENCED_TABLE_NAME": "collections",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "products_collection_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "REFERENCED_TABLE_NAME": "shops",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "products_shop_id_foreign"
+            }
+        ]
+    },
+    "return_requests": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "order_item_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "reason",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "requested",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "response",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "restocked_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "return_requests_order_item_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "order_item_id"
+            },
+            {
+                "INDEX_NAME": "return_requests_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "order_item_id",
+                "REFERENCED_TABLE_NAME": "order_items",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "return_requests_order_item_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "return_requests_user_id_foreign"
+            }
+        ]
+    },
+    "reviews": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "product_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "rating",
+                "COLUMN_TYPE": "tinyint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "comment",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "visible",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "reviews_product_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_id"
+            },
+            {
+                "INDEX_NAME": "reviews_user_id_product_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "reviews_user_id_product_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "product_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_id",
+                "REFERENCED_TABLE_NAME": "products",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "reviews_product_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "reviews_user_id_foreign"
+            }
+        ]
+    },
+    "sessions": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "ip_address",
+                "COLUMN_TYPE": "varchar(45)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "user_agent",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "payload",
+                "COLUMN_TYPE": "longtext",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "last_activity",
+                "COLUMN_TYPE": "int",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "sessions_last_activity_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "last_activity"
+            },
+            {
+                "INDEX_NAME": "sessions_user_id_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "shop_applications": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "description",
+                "COLUMN_TYPE": "text",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "shop_applications_shop_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_id"
+            },
+            {
+                "INDEX_NAME": "shop_applications_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "shop_id",
+                "REFERENCED_TABLE_NAME": "shops",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "shop_applications_shop_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "shop_applications_user_id_foreign"
+            }
+        ]
+    },
+    "shop_orders": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "order_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "inventory_status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "reserved",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "subtotal",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "discount",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "shipping",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "total",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "tracking_number",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "delivered_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "shop_orders_order_id_shop_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "order_id"
+            },
+            {
+                "INDEX_NAME": "shop_orders_order_id_shop_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "shop_id"
+            },
+            {
+                "INDEX_NAME": "shop_orders_shop_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_id"
+            },
+            {
+                "INDEX_NAME": "shop_orders_status_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "status"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "order_id",
+                "REFERENCED_TABLE_NAME": "orders",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "shop_orders_order_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "REFERENCED_TABLE_NAME": "shops",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "shop_orders_shop_id_foreign"
+            }
+        ]
+    },
+    "shops": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "owner_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "slug",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "pending",
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "shops_owner_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "owner_id"
+            },
+            {
+                "INDEX_NAME": "shops_slug_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "slug"
+            },
+            {
+                "INDEX_NAME": "shops_status_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "status"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "owner_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "shops_owner_id_foreign"
+            }
+        ]
+    },
+    "site_settings": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "key",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "value",
+                "COLUMN_TYPE": "json",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "site_settings_key_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "key"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "users": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "name",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "email",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "email_verified_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "password",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "remember_token",
+                "COLUMN_TYPE": "varchar(100)",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "role",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "customer",
+                "COLUMN_KEY": "MUL"
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "users_email_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "email"
+            },
+            {
+                "INDEX_NAME": "users_role_index",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "role"
+            }
+        ],
+        "foreign_keys": []
+    },
+    "voucher_usages": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "voucher_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "order_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "status",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "reserved",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "voucher_usages_order_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "order_id"
+            },
+            {
+                "INDEX_NAME": "voucher_usages_user_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "voucher_usages_voucher_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "voucher_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "order_id",
+                "REFERENCED_TABLE_NAME": "orders",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "voucher_usages_order_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "voucher_usages_user_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "voucher_id",
+                "REFERENCED_TABLE_NAME": "vouchers",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "voucher_usages_voucher_id_foreign"
+            }
+        ]
+    },
+    "vouchers": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "code",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "UNI"
+            },
+            {
+                "COLUMN_NAME": "shop_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "type",
+                "COLUMN_TYPE": "varchar(255)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "value",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "max_discount",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "min_order",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "usage_limit",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "used",
+                "COLUMN_TYPE": "int unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "0",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "starts_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "ends_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "active",
+                "COLUMN_TYPE": "tinyint(1)",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": "1",
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "vouchers_code_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "code"
+            },
+            {
+                "INDEX_NAME": "vouchers_shop_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "shop_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "shop_id",
+                "REFERENCED_TABLE_NAME": "shops",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "vouchers_shop_id_foreign"
+            }
+        ]
+    },
+    "wishlists": {
+        "columns": [
+            {
+                "COLUMN_NAME": "id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "PRI"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "product_id",
+                "COLUMN_TYPE": "bigint unsigned",
+                "IS_NULLABLE": "NO",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": "MUL"
+            },
+            {
+                "COLUMN_NAME": "created_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            },
+            {
+                "COLUMN_NAME": "updated_at",
+                "COLUMN_TYPE": "timestamp",
+                "IS_NULLABLE": "YES",
+                "COLUMN_DEFAULT": null,
+                "COLUMN_KEY": ""
+            }
+        ],
+        "indexes": [
+            {
+                "INDEX_NAME": "PRIMARY",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "id"
+            },
+            {
+                "INDEX_NAME": "wishlists_product_id_foreign",
+                "NON_UNIQUE": 1,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "product_id"
+            },
+            {
+                "INDEX_NAME": "wishlists_user_id_product_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 1,
+                "COLUMN_NAME": "user_id"
+            },
+            {
+                "INDEX_NAME": "wishlists_user_id_product_id_unique",
+                "NON_UNIQUE": 0,
+                "SEQ_IN_INDEX": 2,
+                "COLUMN_NAME": "product_id"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "COLUMN_NAME": "product_id",
+                "REFERENCED_TABLE_NAME": "products",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "wishlists_product_id_foreign"
+            },
+            {
+                "COLUMN_NAME": "user_id",
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "CONSTRAINT_NAME": "wishlists_user_id_foreign"
+            }
+        ]
+    }
+}

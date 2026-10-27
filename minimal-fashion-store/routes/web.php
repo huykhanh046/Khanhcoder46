@@ -1,0 +1,95 @@
+<?php
+
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\ManageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\VoucherAdminController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [CatalogController::class, 'home'])->name('home');
+Route::get('/collections', [CollectionController::class, 'publicIndex'])->name('collections');
+Route::get('/products', [CatalogController::class, 'index'])->name('products.index');
+Route::get('/products/{product}', [CatalogController::class, 'show'])->name('products.show');
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/items', [CartController::class, 'store'])->middleware('throttle:60,1');
+Route::patch('/cart/items/{item}', [CartController::class, 'update']);
+Route::delete('/cart/items/{item}', [CartController::class, 'destroy']);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', fn () => app(AuthController::class)->form('login'))->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:6,1');
+    Route::get('/register', fn () => app(AuthController::class)->form('register'))->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:6,1');
+    Route::get('/forgot-password', fn () => app(AuthController::class)->form('forgot'))->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'forgot'])->middleware('throttle:3,1')->name('password.email');
+    Route::get('/reset-password/{token}', fn (string $token) => view('auth.form', ['mode' => 'reset', 'token' => $token]))->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'reset'])->middleware('throttle:6,1')->name('password.update');
+});
+// IPN is a signed server-to-server GET; browser return never changes payment state.
+Route::get('/payments/ipn', [OrderController::class, 'ipn'])->middleware('throttle:120,1')->name('payments.ipn');
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/account', [AccountController::class, 'index'])->name('account');
+    Route::patch('/account', [AccountController::class, 'update']);
+    Route::put('/account/password', [AccountController::class, 'password'])->middleware('throttle:6,1');
+    Route::post('/addresses', [AccountController::class, 'address']);
+    Route::patch('/addresses/{address}', [AccountController::class, 'updateAddress']);
+    Route::delete('/addresses/{address}', [AccountController::class, 'deleteAddress']);
+    Route::get('/wishlist', [AccountController::class, 'wishlist']);
+    Route::post('/wishlist/{product}', [AccountController::class, 'toggleWishlist']);
+    Route::post('/products/{product}/reviews', [AccountController::class, 'review'])->middleware('throttle:10,1');
+    Route::post('/order-items/{item}/returns', [AccountController::class, 'returnItem']);
+    Route::post('/shop-applications', [AccountController::class, 'applyShop']);
+    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::post('/checkout', [CheckoutController::class, 'store'])->middleware('throttle:10,1');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel']);
+    Route::post('/orders/{order}/pay', [OrderController::class, 'pay']);
+    Route::get('/payments/return', [OrderController::class, 'result'])->name('payments.return');
+    Route::prefix('manage')->middleware('can:manage')->name('manage.')->group(function () {
+        Route::get('/', [ManageController::class, 'dashboard'])->name('dashboard');
+        Route::get('/inventory', [ManageController::class, 'movements']);
+        Route::resource('products', ManageController::class)->except('index', 'show');
+        Route::get('/products', [ManageController::class, 'products'])->name('products.index');
+        Route::post('/products/{product}/variants', [ManageController::class, 'variant']);
+        Route::patch('/variants/{variant}', [ManageController::class, 'updateVariant']);
+        Route::post('/variants/{variant}/inventory', [ManageController::class, 'inventory']);
+        Route::post('/products/{product}/images', [ManageController::class, 'images']);
+        Route::delete('/images/{image}', [ManageController::class, 'deleteImage']);
+        Route::get('/orders', [ManageController::class, 'orders']);
+        Route::get('/orders/{shopOrder}', [ManageController::class, 'showOrder']);
+        Route::post('/orders/{shopOrder}/transition', [ManageController::class, 'transition']);
+        Route::post('/orders/{shopOrder}/money', [ManageController::class, 'money'])->middleware('can:admin');
+        Route::get('/returns', [ManageController::class, 'returns']);
+        Route::post('/returns/{returnRequest}/restock', [ManageController::class, 'restockReturn']);
+        Route::patch('/returns/{returnRequest}', [ManageController::class, 'updateReturn']);
+    });
+    Route::prefix('admin')->middleware('can:admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index']);
+        Route::patch('/users/{user}', [AdminController::class, 'user']);
+        Route::patch('/shops/{shop}', [AdminController::class, 'shop']);
+        Route::patch('/products/{product}/moderate', [AdminController::class, 'moderate']);
+        Route::post('/categories', [AdminController::class, 'category']);
+        Route::patch('/categories/{category}', [AdminController::class, 'updateCategory']);
+        Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory']);
+        Route::resource('vouchers', VoucherAdminController::class)->except('show')->names('admin.vouchers');
+        Route::resource('collections', CollectionController::class)->except('show')->names('admin.collections');
+        Route::get('/payments', [FinanceController::class, 'index']);
+        Route::post('/orders/{order}/cancel', [FinanceController::class, 'cancel']);
+        Route::get('/shipping', [FinanceController::class, 'shipping']);
+        Route::put('/shipping', [FinanceController::class, 'updateShipping']);
+        Route::patch('/vouchers/{voucher}/toggle', [AdminController::class, 'toggleVoucher']);
+        Route::post('/banners', [AdminController::class, 'banner']);
+        Route::patch('/banners/{banner}', [AdminController::class, 'updateBanner']);
+        Route::delete('/banners/{banner}', [AdminController::class, 'deleteBanner']);
+        Route::put('/settings', [AdminController::class, 'settings']);
+        Route::patch('/reviews/{review}', [AdminController::class, 'review']);
+    });
+});

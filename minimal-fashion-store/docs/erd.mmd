@@ -1,0 +1,394 @@
+erDiagram
+    addresses {
+        bigint_unsigned id PK
+        bigint_unsigned user_id FK
+        varchar_255_ name
+        varchar_20_ phone
+        varchar_255_ address
+        varchar_255_ city
+        timestamp created_at
+        timestamp updated_at
+    }
+    users ||--o{ addresses : user_id
+    audit_logs {
+        bigint_unsigned id PK
+        bigint_unsigned user_id FK
+        varchar_255_ action
+        varchar_255_ subject_type
+        bigint_unsigned subject_id
+        json changes
+        timestamp created_at
+        timestamp updated_at
+    }
+    users ||--o{ audit_logs : user_id
+    banners {
+        bigint_unsigned id PK
+        varchar_255_ title
+        varchar_255_ subtitle
+        varchar_255_ image_path
+        varchar_255_ link
+        int_unsigned position
+        tinyint_1_ active
+        timestamp created_at
+        timestamp updated_at
+    }
+    cache {
+        varchar_255_ key PK
+        mediumtext value
+        int expiration
+    }
+    cache_locks {
+        varchar_255_ key PK
+        varchar_255_ owner
+        int expiration
+    }
+    cart_items {
+        bigint_unsigned id PK
+        bigint_unsigned cart_id FK
+        bigint_unsigned product_variant_id FK
+        int_unsigned quantity
+        timestamp created_at
+        timestamp updated_at
+    }
+    carts ||--o{ cart_items : cart_id
+    product_variants ||--o{ cart_items : product_variant_id
+    carts {
+        bigint_unsigned id PK
+        bigint_unsigned user_id UK,FK
+        char_36_ token UK
+        timestamp created_at
+        timestamp updated_at
+    }
+    users ||--o{ carts : user_id
+    categories {
+        bigint_unsigned id PK
+        varchar_255_ name
+        varchar_255_ slug UK
+        timestamp created_at
+        timestamp updated_at
+    }
+    collections {
+        bigint_unsigned id PK
+        varchar_100_ name
+        varchar_120_ slug UK
+        text description
+        varchar_255_ image_path
+        tinyint_1_ active
+        int_unsigned position
+        timestamp created_at
+        timestamp updated_at
+    }
+    failed_jobs {
+        bigint_unsigned id PK
+        varchar_255_ uuid UK
+        text connection
+        text queue
+        longtext payload
+        longtext exception
+        timestamp failed_at
+    }
+    inventories {
+        bigint_unsigned id PK
+        bigint_unsigned product_variant_id UK,FK
+        int_unsigned stock
+        int_unsigned reserved
+        timestamp created_at
+        timestamp updated_at
+    }
+    product_variants ||--o{ inventories : product_variant_id
+    inventory_movements {
+        bigint_unsigned id PK
+        bigint_unsigned product_variant_id FK
+        bigint_unsigned user_id FK
+        int stock_delta
+        int reserved_delta
+        varchar_255_ reason
+        varchar_255_ event_key UK
+        timestamp created_at
+        timestamp updated_at
+    }
+    product_variants ||--o{ inventory_movements : product_variant_id
+    users ||--o{ inventory_movements : user_id
+    job_batches {
+        varchar_255_ id PK
+        varchar_255_ name
+        int total_jobs
+        int pending_jobs
+        int failed_jobs
+        longtext failed_job_ids
+        mediumtext options
+        int cancelled_at
+        int created_at
+        int finished_at
+    }
+    jobs {
+        bigint_unsigned id PK
+        varchar_255_ queue
+        longtext payload
+        tinyint_unsigned attempts
+        int_unsigned reserved_at
+        int_unsigned available_at
+        int_unsigned created_at
+    }
+    migrations {
+        int_unsigned id PK
+        varchar_255_ migration
+        int batch
+    }
+    notifications {
+        bigint_unsigned id PK
+        varchar_255_ type
+        varchar_255_ notifiable_type
+        bigint_unsigned notifiable_id
+        text data
+        timestamp read_at
+        timestamp created_at
+        timestamp updated_at
+    }
+    order_items {
+        bigint_unsigned id PK
+        bigint_unsigned shop_order_id FK
+        bigint_unsigned product_variant_id FK
+        varchar_255_ product_name
+        varchar_255_ sku
+        varchar_255_ size
+        varchar_255_ color
+        bigint_unsigned unit_price
+        int_unsigned quantity
+        bigint_unsigned total
+        timestamp created_at
+        timestamp updated_at
+    }
+    product_variants ||--o{ order_items : product_variant_id
+    shop_orders ||--o{ order_items : shop_order_id
+    orders {
+        bigint_unsigned id PK
+        char_36_ number UK
+        bigint_unsigned user_id FK
+        char_36_ checkout_key UK
+        varchar_255_ status
+        varchar_255_ payment_method
+        json shipping_address
+        bigint_unsigned subtotal
+        bigint_unsigned discount
+        bigint_unsigned shipping
+        bigint_unsigned total
+        timestamp expires_at
+        timestamp created_at
+        timestamp updated_at
+        varchar_255_ shipping_method
+        varchar_255_ shipping_label
+    }
+    users ||--o{ orders : user_id
+    password_reset_tokens {
+        varchar_255_ email PK
+        varchar_255_ token
+        timestamp created_at
+    }
+    payment_callbacks {
+        bigint_unsigned id PK
+        bigint_unsigned payment_id FK
+        char_64_ fingerprint UK
+        varchar_100_ transaction_reference
+        varchar_100_ provider_reference
+        varchar_10_ response_code
+        tinyint_1_ signature_valid
+        varchar_150_ verdict
+        int_unsigned attempts
+        timestamp created_at
+        timestamp updated_at
+    }
+    payments ||--o{ payment_callbacks : payment_id
+    payment_transactions {
+        bigint_unsigned id PK
+        bigint_unsigned payment_id FK
+        bigint_unsigned shop_order_id FK
+        varchar_255_ type
+        bigint_unsigned amount
+        varchar_255_ event_key UK
+        varchar_255_ provider_reference
+        varchar_255_ result_code
+        timestamp created_at
+        timestamp updated_at
+    }
+    payments ||--o{ payment_transactions : payment_id
+    shop_orders ||--o{ payment_transactions : shop_order_id
+    payments {
+        bigint_unsigned id PK
+        bigint_unsigned order_id UK,FK
+        char_36_ reference UK
+        varchar_255_ method
+        varchar_255_ status
+        bigint_unsigned amount
+        timestamp created_at
+        timestamp updated_at
+    }
+    orders ||--o{ payments : order_id
+    product_images {
+        bigint_unsigned id PK
+        bigint_unsigned product_id FK
+        varchar_255_ path
+        varchar_255_ alt
+        int_unsigned position
+        timestamp created_at
+        timestamp updated_at
+    }
+    products ||--o{ product_images : product_id
+    product_variants {
+        bigint_unsigned id PK
+        bigint_unsigned product_id FK
+        varchar_255_ sku UK
+        varchar_20_ size
+        varchar_50_ color
+        bigint_unsigned price
+        bigint_unsigned compare_price
+        tinyint_1_ active
+        timestamp created_at
+        timestamp updated_at
+    }
+    products ||--o{ product_variants : product_id
+    products {
+        bigint_unsigned id PK
+        bigint_unsigned shop_id FK
+        bigint_unsigned category_id FK
+        varchar_255_ name
+        varchar_255_ slug UK
+        text description
+        varchar_255_ status
+        tinyint_1_ active
+        timestamp deleted_at
+        timestamp created_at
+        timestamp updated_at
+        bigint_unsigned collection_id FK
+    }
+    categories ||--o{ products : category_id
+    collections ||--o{ products : collection_id
+    shops ||--o{ products : shop_id
+    return_requests {
+        bigint_unsigned id PK
+        bigint_unsigned order_item_id UK,FK
+        bigint_unsigned user_id FK
+        varchar_255_ type
+        text reason
+        varchar_255_ status
+        text response
+        timestamp created_at
+        timestamp updated_at
+        timestamp restocked_at
+    }
+    order_items ||--o{ return_requests : order_item_id
+    users ||--o{ return_requests : user_id
+    reviews {
+        bigint_unsigned id PK
+        bigint_unsigned user_id FK
+        bigint_unsigned product_id FK
+        tinyint_unsigned rating
+        text comment
+        tinyint_1_ visible
+        timestamp created_at
+        timestamp updated_at
+    }
+    products ||--o{ reviews : product_id
+    users ||--o{ reviews : user_id
+    sessions {
+        varchar_255_ id PK
+        bigint_unsigned user_id
+        varchar_45_ ip_address
+        text user_agent
+        longtext payload
+        int last_activity
+    }
+    shop_applications {
+        bigint_unsigned id PK
+        bigint_unsigned user_id FK
+        bigint_unsigned shop_id FK
+        text description
+        varchar_255_ status
+        timestamp created_at
+        timestamp updated_at
+    }
+    shops ||--o{ shop_applications : shop_id
+    users ||--o{ shop_applications : user_id
+    shop_orders {
+        bigint_unsigned id PK
+        bigint_unsigned order_id FK
+        bigint_unsigned shop_id FK
+        varchar_255_ status
+        varchar_255_ inventory_status
+        bigint_unsigned subtotal
+        bigint_unsigned discount
+        bigint_unsigned shipping
+        bigint_unsigned total
+        varchar_255_ tracking_number
+        timestamp delivered_at
+        timestamp created_at
+        timestamp updated_at
+    }
+    orders ||--o{ shop_orders : order_id
+    shops ||--o{ shop_orders : shop_id
+    shops {
+        bigint_unsigned id PK
+        bigint_unsigned owner_id UK,FK
+        varchar_255_ name
+        varchar_255_ slug UK
+        varchar_255_ status
+        timestamp created_at
+        timestamp updated_at
+    }
+    users ||--o{ shops : owner_id
+    site_settings {
+        bigint_unsigned id PK
+        varchar_255_ key UK
+        json value
+        timestamp created_at
+        timestamp updated_at
+    }
+    users {
+        bigint_unsigned id PK
+        varchar_255_ name
+        varchar_255_ email UK
+        timestamp email_verified_at
+        varchar_255_ password
+        varchar_100_ remember_token
+        timestamp created_at
+        timestamp updated_at
+        varchar_255_ role
+    }
+    voucher_usages {
+        bigint_unsigned id PK
+        bigint_unsigned voucher_id FK
+        bigint_unsigned order_id UK,FK
+        bigint_unsigned user_id FK
+        varchar_255_ status
+        timestamp created_at
+        timestamp updated_at
+    }
+    orders ||--o{ voucher_usages : order_id
+    users ||--o{ voucher_usages : user_id
+    vouchers ||--o{ voucher_usages : voucher_id
+    vouchers {
+        bigint_unsigned id PK
+        varchar_255_ code UK
+        bigint_unsigned shop_id FK
+        varchar_255_ type
+        bigint_unsigned value
+        bigint_unsigned max_discount
+        bigint_unsigned min_order
+        int_unsigned usage_limit
+        int_unsigned used
+        timestamp starts_at
+        timestamp ends_at
+        tinyint_1_ active
+        timestamp created_at
+        timestamp updated_at
+    }
+    shops ||--o{ vouchers : shop_id
+    wishlists {
+        bigint_unsigned id PK
+        bigint_unsigned user_id FK
+        bigint_unsigned product_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+    products ||--o{ wishlists : product_id
+    users ||--o{ wishlists : user_id

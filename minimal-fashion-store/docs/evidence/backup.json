@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "method": "mysqldump --single-transaction; restore into independent minimal_restore",
+  "columns": [
+    "products",
+    "variants",
+    "orders",
+    "stock_total",
+    "reserved_total",
+    "transaction_amount_sum"
+  ],
+  "source": [
+    40,
+    240,
+    19,
+    7138,
+    16,
+    2243000
+  ],
+  "restored": [
+    40,
+    240,
+    19,
+    7138,
+    16,
+    2243000
+  ]
+}

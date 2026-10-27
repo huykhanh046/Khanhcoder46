@@ -1,0 +1,88 @@
+{
+    "passed": true,
+    "scenarios": {
+        "last_item": {
+            "passed": true,
+            "results": [
+                {
+                    "result": "unavailable"
+                },
+                {
+                    "result": "success",
+                    "value": 1
+                }
+            ],
+            "orders": 1,
+            "stock": 1,
+            "reserved": 1
+        },
+        "last_voucher": {
+            "passed": true,
+            "results": [
+                {
+                    "result": "unavailable"
+                },
+                {
+                    "result": "success",
+                    "value": 1
+                }
+            ],
+            "used": 1
+        },
+        "duplicate_ipn": {
+            "passed": true,
+            "results": [
+                {
+                    "result": "success",
+                    "value": {
+                        "RspCode": "00",
+                        "Message": "Confirm success"
+                    }
+                },
+                {
+                    "result": "success",
+                    "value": {
+                        "RspCode": "02",
+                        "Message": "Order already confirmed"
+                    }
+                }
+            ],
+            "captures": 1,
+            "callback_attempts": 2
+        },
+        "cancel_vs_ipn": {
+            "passed": true,
+            "results": [
+                {
+                    "result": "success",
+                    "value": "cancelled"
+                },
+                {
+                    "result": "success",
+                    "value": {
+                        "RspCode": "02",
+                        "Message": "Order already confirmed"
+                    }
+                }
+            ],
+            "captures_amount": 0,
+            "payment_status": "cancelled",
+            "reserved": 0
+        },
+        "duplicate_return_restock": {
+            "passed": true,
+            "results": [
+                {
+                    "result": "success",
+                    "value": "restocked"
+                },
+                {
+                    "result": "success",
+                    "value": "restocked"
+                }
+            ],
+            "stock": 1,
+            "reserved": 0
+        }
+    }
+}

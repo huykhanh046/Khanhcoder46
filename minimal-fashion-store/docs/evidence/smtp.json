@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "transport": "SMTP local Mailpit, database queue worker",
+  "checks": [
+    "OrderPlaced delivered to SMTP sink",
+    "ResetPasswordQueued delivered to SMTP sink",
+    "Reset link from actual MIME email accepted; password changed"
+  ],
+  "external_email_sent": false
+}

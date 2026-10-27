@@ -1,0 +1,47 @@
+PASS  Tests\Feature\CommerceTest
+  ✓ registration login and role cannot be injected                       1.65s
+  ✓ guest pages render and guest cart persists in mysql                  0.09s
+  ✓ cart merge and ownership                                             0.04s
+  ✓ cart stock and current prices are revalidated                        0.13s
+  ✓ cod split order snapshot and idempotency                             0.09s
+  ✓ voucher allocation scope expiry and usage limit                      0.11s
+  ✓ percent voucher uses integer rounding and maximum                    0.01s
+  ✓ payment signature amount duplicate and browser return                0.10s
+  ✓ failed payment and expiry release only once                          0.18s
+  ✓ cancellation and state machine and revenue                           0.13s
+  ✓ seller cannot access other shops and customer cannot manage          0.07s
+  ✓ product crud variant validation and soft delete                      0.04s
+  ✓ review requires delivery and return ownership                        0.07s
+  ✓ unconfigured vnpay is not a fake success                             0.02s
+  ✓ admin pages and settings persist                                     0.04s
+  ✓ password reset requires valid token and changes hash                 0.22s
+  ✓ http checkout ignores client supplied prices                         0.04s
+  ✓ multiple variants keep separate stock and catalog filters            0.10s
+  ✓ manual money replay is idempotent and over refund fails              0.11s
+  ✓ partial shop refund does not block other paid shop                   0.11s
+  ✓ inventory cannot be adjusted below reserved                          0.09s
+  ✓ upload rejects svg and seller ownership                              0.04s
+  ✓ return window and status transitions are enforced                    0.11s
+
+   PASS  Tests\Feature\CompletionTest
+  ✓ login skips a guest item that was hidden after being added           0.03s
+  ✓ express shipping is server priced and snapshotted per shop           0.09s
+  ✓ fake shipping method cannot create an order                          0.02s
+  ✓ shipping settings are admin only and require positive fees           0.02s
+  ✓ collection crud filters and delete preserves products                0.04s
+  ✓ voucher edit cannot reduce limit below used or change existing orde… 0.10s
+  ✓ percent voucher caps values and empty voucher can be deleted         0.02s
+  ✓ unpaid vnpay suborder cannot be cancelled individually               0.13s
+  ✓ cod payment becomes paid after remaining shop is collected           0.11s
+  ✓ refunded online order cannot be dispatched                           0.10s
+  ✓ callbacks are audited without duplication of capture                 0.10s
+  ✓ incomplete signed ipn does not cancel or pay order                   0.09s
+  ✓ customer cannot unhide moderated review and admin can read deleted…  0.07s
+  ✓ return request and restock are idempotent and enforce ownership      0.13s
+  ✓ homepage sections can be hidden and menu extended                    0.02s
+  ✓ cart warns and checkout is blocked when stock changes                0.02s
+  ✓ reset password revokes database sessions and queues notification     0.22s
+  ✓ password change revokes other sessions and rotates remember token    0.02s
+
+  Tests:    41 passed (213 assertions)
+  Duration: 5.00s

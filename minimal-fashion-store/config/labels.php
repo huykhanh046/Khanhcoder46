@@ -1,0 +1,3 @@
+<?php
+
+return ['pending' => 'Chờ xác nhận', 'confirmed' => 'Đã xác nhận', 'packing' => 'Đang đóng gói', 'shipping' => 'Đang giao', 'delivered' => 'Đã giao', 'completed' => 'Hoàn tất', 'cancelled' => 'Đã hủy', 'processing' => 'Đang xử lý', 'paid' => 'Đã thanh toán', 'partial' => 'Đã thu một phần', 'failed' => 'Thất bại', 'expired' => 'Hết hạn', 'refunded' => 'Đã hoàn tiền', 'partially_refunded' => 'Đã hoàn một phần', 'approved' => 'Đã duyệt', 'rejected' => 'Từ chối', 'requested' => 'Mới gửi', 'received' => 'Đã nhận hàng', 'resolved' => 'Đã xử lý', 'capture' => 'Thu tiền', 'refund' => 'Hoàn tiền', 'cod' => 'Thanh toán khi nhận hàng', 'vnpay' => 'VNPay Sandbox', 'customer' => 'Khách hàng', 'seller' => 'Người bán', 'admin' => 'Quản trị viên'];

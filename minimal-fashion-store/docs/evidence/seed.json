@@ -1,0 +1,9 @@
+{
+    "passed": true,
+    "products": 40,
+    "variants": 240,
+    "minimum_variant_id": 1000,
+    "orders": 18,
+    "shops_with_revenue": 2,
+    "inventory_ledger_mismatches": 0
+}

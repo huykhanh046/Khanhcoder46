@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "Homepage desktop rendered",
+    "Customer login with real session and CSRF form",
+    "Variant selection → cart → COD checkout → persisted order",
+    "Order persists after reload",
+    "POST without CSRF rejected with 419",
+    "Admin dashboard and Chart.js rendered",
+    "/admin HTTP 200",
+    "/manage/products HTTP 200",
+    "/manage/products/1/edit HTTP 200",
+    "/manage/orders HTTP 200",
+    "/manage/inventory HTTP 200",
+    "/manage/returns HTTP 200",
+    "/admin/payments HTTP 200",
+    "/admin/vouchers HTTP 200",
+    "/admin/vouchers/create HTTP 200",
+    "/admin/collections HTTP 200",
+    "/admin/collections/create HTTP 200",
+    "/admin/shipping HTTP 200",
+    "/collections HTTP 200",
+    "Admin advances COD order through delivery/completion and records actual-demo collection",
+    "Collection create with validated image upload persists on public listing",
+    "Buyer submits return for delivered item",
+    "Admin approves, receives and restocks return once",
+    "390px mobile layout has no horizontal overflow; menu toggles"
+  ],
+  "page_errors": []
+}
